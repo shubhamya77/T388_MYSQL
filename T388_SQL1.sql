@@ -86,4 +86,23 @@ update employee set TITLE ="MRs" where gender ="female";
 update employee set bonus = salary*0.05;
 select * from employee;
 
+use t388;
+create table kisan_info
+(ID int unique not null,
+NAME varchar(50) unique not null,
+age int check (age>=18),
+email_ID varchar(40) default "dummy@gmail.com");
+desc kisan_info;
+insert into kisan_info values
+(2009,"rohan",18,default); 
+select* from kisan_in fo;
+
+alter table kisan_info modify age int check (age>=20)
+
+ 
+
+
+
+
+
 
