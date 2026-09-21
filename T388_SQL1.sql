@@ -97,7 +97,99 @@ insert into kisan_info values
 (2009,"rohan",18,default); 
 select* from kisan_in fo;
 
-alter table kisan_info modify age int check (age>=20)
+alter table kisan_info modify age int check (age>=20);
+
+select distinct department from employee;
+
+select distinct gender  from employee;
+
+select* from employee 
+where department ="IT" or department ="Finance";
+
+select* from employee 
+
+WHERE DEPARTMENT IN ("It","Finance");
+
+
+create database pizza_sales_analysis ;
+
+show databases;
+
+use  pizza_sales_analysis;
+
+
+create table `order`(id int, date date );
+select * from employee  where gender ="Male" order by department desc;
+
+select * from employee limit 5;
+
+select department,count(EmployeeID) from employee group by department;
+select gender,count(EmployeeID) FROM employee group by gender;
+select department,sum(salary) from employee group by department;
+select department,avg(salary) from employee group by department;
+select department,avg(salary),count(EmployeeID) FROM employee group by department;
+
+-- Having clause (is always used with along with group by clause)
+select department,count(*) from employee group by department having sum(salary) >150000;
+
+select department,avg(age),count(*) from employee group by department having avg(age) <27;
+
+CREATE TABLE Projects (
+ ProjectId INT PRIMARY KEY AUTO_INCREMENT,   
+ProjectName VARCHAR(200) NOT NULL,
+ EmployeeId INT,
+StartDate DATETIME,   
+EndDate DATETIME
+);
+
+INSERT INTO Projects VALUES
+(1,'Develop Ecommerse Website from
+scratch', 1003, NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(2,'WordPress Website for our company',
+1002, NOW(), DATE_ADD(NOW(), INTERVAL 45 DAY)),
+(3,'Manage our Company Servers', 1007,
+NOW(), DATE_ADD(NOW(), INTERVAL 45 DAY)),
+(4,'Hosting account is not working', 1009,
+NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY)),
+(5,'MySQL database from my desktop
+application', 1010, NOW(), DATE_ADD(NOW(), INTERVAL 15 DAY)),
+(6,'Develop new WordPress plugin for my business
+website', NULL, NOW(), DATE_ADD(NOW(), INTERVAL 10 DAY)),
+(7,'Migrate web application and database to
+new server', NULL, NOW(), DATE_ADD(NOW(), INTERVAL 5 DAY)),
+(8,'Android Application development', 1004,
+NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(9,'Hosting account is not working', 1001,
+NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY)),
+(10,'MySQL database from my desktop
+application', 1008, NOW(), DATE_ADD(NOW(), INTERVAL 15 DAY)),
+(11,'Develop new WordPress plugin for my
+business website', NULL, NOW(), DATE_ADD(NOW(), INTERVAL 10 DAY));
+
+select * from Projects;
+select NOW();
+select *,DATEDIFF(enddate, startdate) as Duration from Projects;
+select * from projects where datediff(enddate, startdate)=45;
+
+alter table projects add duration Int;
+insert into projrcts(Duration) values(datediff(enddate - startdate);
+UPDATE projects
+set duration = DATEDIFF( ENDDATE,STARTDATE);
+select duration, count(*) from projects group by duration;
+select duration, count(*) 
+from projects 
+where duration>=20 
+group by duration
+having count(*) >= 2
+order by duration desc
+limit 2;
+select duration 
+from projects;
+select * from employee limit 2,3;
+ 
+
+
+
 
  
 
