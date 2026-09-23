@@ -186,7 +186,67 @@ limit 2;
 select duration 
 from projects;
 select * from employee limit 2,3;
+ALTER TABLE `order` ADD time TIME AFTER `date`;
+
+
+alter table `order` rename to orders;
+
+alter table orders modify id int primary key;
+
+use t388;
+select distinct department from employee;
+ select distinct gender from employee;
  
+ 
+ -- is null or not null 
+ select *from projects;
+ select *from projects where employeeid is null;
+select *from projects where employeeid is not null;
+
+update projects set employeeid = 1003 where projectid =6;
+
+-- IN , Between and Like
+select * from employee;
+select * from employee where age between 25 and 27;
+select * from employee where employeeid between 1003 and 1007;
+select * from employee where employeeid in ( 1003 ,1005, 1007 );
+
+select * from employee where age in (23,28);
+select * from employee where age in (23,28) and deparTment ="IT"; 
+select * from employee where age in (23,28) and deparTment ="IT" and employeeid in (1000,1009);
+
+-- LIKE
+-- % EXPRESS "0" OR ANY NUMBER OF CHARECTERS.
+use t388;
+SELECT *FROM SIMPLE1;
+DROP TABLE SIMPLE;
+SELECT * FROM SIMPLE1 WHERE FULLNAME LIKE "A%";
+SELECT * FROM SIMPLE1 WHERE FULLNAME LIKE "_U%";
+SELECT * FROM SIMPLE1 WHERE FULLNAME LIKE "%AN%";
+SELECT * FROM SIMPLE1 WHERE FULLNAME LIKE "A%T";
+
+-- BUILT IN FUNCTION
+
+SELECT AVG(SALARY) FROM EMPLOYEE;
+SELECT MAX(SALARY) FROM EMPLOYEE;
+SELECT MIN(SALARY) FROM EMPLOYEE;
+SELECT SUM(SALARY) FROM EMPLOYEE;
+SELECT COUNT(*) FROM EMPLOYEE;
+SELECT COUNT(*) AS TOTAL_EMP,AVG(SALARY) AS AVERAGE,SUM(SALARY) AS TOTAL_SALARY FROM EMPLOYEE;
+
+-- MATH FUNCTION
+SELECT ABS(300-800);
+SELECT ABS(6*(-7)
+SELECT DATEDIFF(STARTDATE,ENDDATE) FROM PROJECTS;
+SELECT CEIL(33.8);
+SELECT FLOOR(33.8);
+SELECT DATEDIFF(STARTDATE,ENDDATE) FROM PROJECTS;
+SELECT truncate(123456.87654,0);
+SELECT truncate(123456.87654,1);
+SELECT truncate(123456.87654,-2);
+
+
+
 
 
 
