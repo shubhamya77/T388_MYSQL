@@ -244,10 +244,45 @@ SELECT DATEDIFF(STARTDATE,ENDDATE) FROM PROJECTS;
 SELECT truncate(123456.87654,0);
 SELECT truncate(123456.87654,1);
 SELECT truncate(123456.87654,-2);
+use t388;
+
+-- AUTO INCREMENT 
+select exp(2);
+select power(2,4);
+select sqrt(144);
+select*,sqrt(salary) from employee;
+
+select concat("Good","Morning");
+select concat("Good","Morning") as Remarks;
+select*,concat(fullname,"_",department) as code from employee;
 
 
+select * from employee;
+alter table employee add EMAIL varchar(50);
+update employee set EMAIL = concat(fullname,"@gmail.com");
 
+select replace("Hello Everyone, Good Night" ,"Night","Morning") as statement;
+select fullname,replace(fullname,"Mohanty","Patil") as changed from employee;
 
+select fullname, length(fullname) from employee;
+
+select substring("Maharashtra",1,3); 
+
+select fullname, length(fullname) as Actual_Length,
+ltrim(fullname) as lefttrim, length(ltrim(fullname)) as LTRIM_LENGTH,
+rtrim(fullname) as Righttrim, length(rtrim(fullname)) as RTRIM_LENGTH,
+trim(fullname),length(rtrim(fullname)) from trimmer;
+select age from employee where  employeeid = 1002;
+
+select age from employee where fullname ="Mary Smith";
+select * from employee where age =(select age from employee where fullname ="Mary Smith");
+select salary from employee where fullname ="John Doe";
+select * from employee where department=(select department from employee where fullname ="John Doe");
+select max(salary) from employee;
+-- to show 2nd highest salary
+select max(salary) from employee where salary < (select max(salary) from employee);
+
+select max(salary) from employee where salary <(select max(salary) from employee where salary < (select max(salary) from employee));
 
 
 
