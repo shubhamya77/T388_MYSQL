@@ -282,12 +282,47 @@ select max(salary) from employee;
 -- to show 2nd highest salary
 select max(salary) from employee where salary < (select max(salary) from employee);
 
-select max(salary) from employee where salary <(select max(salary) from employee where salary < (select max(salary) from employee));
+select max(salary) from employee where salary <(select max(salary) from employee 
+where salary < (select max(salary) from ;
+use t388;
 
 
+-- MULTIPLE ROW SUBQUERY
+select * from employee;
+select age from employee where employeeid in(1002,1003);
+select * from employee
+where age in (select age from employee where employeeid in(1002,1003)); 
 
- 
+-- ANY , ALL function
+use t388;
+select distinct salary from employee;
+select * from employee where
+salary >any(select salary from employee where employeeid between 1001 and 1003);
+select salary from employee where employeeid between 1001 and 1003;
 
+ select * from employee where
+salary >=any(select salary from employee where employeeid between 1001 and 1003);
+
+select * from employee where
+salary >all(select salary from employee where employeeid between 1001 and 1003);
+
+use t388;
+-- JOINS
+SELECT * FROM NAME_T388;
+SELECT * FROM SALARY_T388;
+-- INNER JOIN
+select salary_t388.id,name,salary 
+from name_t388 
+join salary_t388 
+on name_t388.id = salary_t388.id;
+
+-- LEFT JOIN
+select salary_t388.id,name,salary from salary_t388 left join name_t388 on salary_t388.id = name_t388.id;
+
+ select name_t388.id,name,salary from name_t388 left join salary_t388 on name_t388.id = salary_t388.id;
+
+-- RIGHT JOIN
+select name_t388.id, name, salary from salary_t388 right join name_t388 on salary_t388.id = name_t388.id; 
 
 
 
