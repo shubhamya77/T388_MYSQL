@@ -322,8 +322,23 @@ select salary_t388.id,name,salary from salary_t388 left join name_t388 on salary
  select name_t388.id,name,salary from name_t388 left join salary_t388 on name_t388.id = salary_t388.id;
 
 -- RIGHT JOIN
-select name_t388.id, name, salary from salary_t388 right join name_t388 on salary_t388.id = name_t388.id; 
 
+
+-- OUTER JOIN
+use t388;
+SELECT * FROM name_t388;
+SELECT * FROM salary_t388;
+select n.id as name_id,s.id as salary_id, name ,salary
+ from name_t388 as n 
+ left join 
+ salary_t388 as s
+ on s.id =n.id;
+ 
+select n.id as name_id,s.id as salary_id, name ,salary
+ from name_t388 as n
+ right join 
+ salary_t388 as s
+ on s.id =n.id;
 
 
 
