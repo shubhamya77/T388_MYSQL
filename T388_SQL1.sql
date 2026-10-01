@@ -399,5 +399,78 @@ select * from project;
 update employee set id = 500 where id =101;
 
 
+use t388;
+select * from employee;
+select
+EmployeeId,
+FullName,
+Department,
+Salary,
+row_number() OVER (PARTITION BY Department ) AS rankInDepartment 
+from Employee;
+SELECT Fullname,Department,Salary,ROW_NUMBER () OVER (PARTITION BY Department ) AS rankInDepartment 
+from Employee ORDER BY SALARY ASC;
+
+SELECT Fullname,Salary, rank() OVER (order BY Salary)AS rankInDepartment 
+from Employee;
+SELECT Fullname,Department,Salary, dense_rank() OVER (order  BY Salary ) AS rankInDepartment 
+from Employee; 
+
+SELECT
+EmployeeId,
+FullName,
+Department,
+Salary,
+avg(Salary) OVER (PARTITION BY Department) AS DeparmentAVGSalary,
+sum(Salary) OVER (PARTITION BY Department) AS DeparmentTotalSalary
+FROM Employee
+Order by
+Department, Salary DESC;
+
+SELECT
+EmployeeId,
+FullName,
+Department,
+Salary,
+avg(Salary) OVER (PARTITION BY Department) AS DeparmentAVGSalary,
+sum(Salary) OVER (PARTITION BY Department) AS DeparmentTotalSalary
+FROM Employee
+WHERE GENDER ="Male"
+Order by
+Department, Salary DESC;
 
 
+SELECT
+EmployeeId,
+FullName,
+Department,
+Age,
+Salary,
+LAG(Salary,1, 0) OVER (PARTITION BY Department ORDER BY Age ASC) AS PreviousEmployeeSalaryByAge
+FROM Employee
+ORDER BY
+Department, Age;
+
+
+SELECT
+EmployeeId,
+FullName,
+Department,
+Age,
+Salary,
+LAG(Salary,1, 0) OVER (ORDER BY Salary) AS PreviousEmployeeSalaryByAge
+FROM Employee
+ORDER BY
+salary;
+
+
+SELECT
+EmployeeId,
+FullName,
+Department,
+Age,
+Salary,
+lead(Salary,2, 0) OVER (ORDER BY Salary) AS PreviousEmployeeSalaryByAge
+FROM Employee
+ORDER BY
+salary;
